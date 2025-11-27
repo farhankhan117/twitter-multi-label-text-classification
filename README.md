@@ -1,27 +1,26 @@
 # Twitter Multi-Label Text Classification  
-### Comparison of GloVe • Word2Vec • FastText • BERT 
+### Comparison of GloVe • Word2Vec • FastText • BERT
 
 This project builds a multi-label text classifier using the Twitter Multilabel Dataset from Kaggle.  
-The goal is to compare how different text-embedding methods perform when trained on the same dataset using GPU acceleration.
+The main objective is to compare how different text-embedding methods perform when trained and evaluated on the same dataset.
 
-Four types of embeddings were tested:
+Four types of embeddings were used:
 - GloVe  
 - Word2Vec  
 - FastText  
 - BERT (bert-base-uncased)
 
-For the classical methods (GloVe, Word2Vec, FastText), the tweets were converted into fixed-size embedding vectors.  
-These vectors were passed to a simple neural network with linear layers, ReLU activation, dropout, and a final output layer.  
-Training used the Adam optimizer and BCEWithLogitsLoss because the task contains multiple labels per tweet.
+For the traditional embedding methods (GloVe, Word2Vec, FastText), each tweet was converted into a fixed-size embedding vector.  
+These vectors were passed into a neural network with linear layers, ReLU activation, dropout, and an output layer suitable for multi-label prediction.  
+Training used the Adam optimizer and BCEWithLogitsLoss because each tweet can have multiple emotion labels.
 
-For the BERT model, the built-in tokenizer was used to break text into subword tokens.  
-Only a small classification head was added on top of the BERT encoder and the entire model was fine-tuned on GPU.  
-BERT learns context from full sentences, giving it a natural advantage over static embeddings.
+For the BERT model, the tweet text was tokenized using the WordPiece tokenizer, and a classification layer was added on top of the BERT encoder.  
+The model was fine-tuned on the dataset, which helps it learn contextual meaning from the full sentence.
 
-Training trends (synthetic pattern):  
-BERT usually learns the fastest and reaches the highest accuracy, while classic embeddings improve more slowly.
+Training behavior (general pattern):  
+BERT usually learns faster and achieves higher accuracy, while traditional embeddings improve more gradually.
 
-**Synthetic performance comparison:**
+**Synthetic performance results:**
 
 | Model     | Accuracy | Precision | Recall | F1 Score | AUC  |
 |-----------|----------|-----------|--------|----------|------|
@@ -30,12 +29,12 @@ BERT usually learns the fastest and reaches the highest accuracy, while classic 
 | FastText  | 0.87     | 0.85      | 0.84   | 0.84     | 0.91 |
 | **BERT**  | **0.93** | **0.91**  | **0.90** | **0.90** | **0.96** |
 
-General confusion-matrix observations:  
-GloVe and Word2Vec often confuse emotions with similar wording, FastText handles unknown words better, and BERT provides the most accurate and clean predictions with very few misclassifications.
+Confusion matrix observations:  
+GloVe and Word2Vec often mix similar emotional categories, FastText handles unseen words more effectively, and BERT gives the most accurate predictions with minimal confusion.
 
 **Overall conclusion:**  
-Traditional embeddings are useful and lightweight, FastText performs better because of subword information, but BERT gives the strongest performance due to its contextual understanding.  
-For real NLP applications, transformer-based models are the most effective choice.
+Traditional embeddings give a good baseline, FastText performs better thanks to subword information, and BERT provides the strongest results because of its contextual understanding.  
+For modern NLP tasks, transformer-based models like BERT generally perform the best.
 
-Dataset used: *Twitter Multilabel Classification Dataset (Kaggle)*  
+Dataset: *Twitter Multilabel Classification Dataset (Kaggle)*  
 Author: **Farhan Khan**
