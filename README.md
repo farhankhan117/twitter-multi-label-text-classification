@@ -1,5 +1,5 @@
 # Twitter Multi-Label Text Classification  
-### Comparison of GloVe • Word2Vec • FastText • BERT (GPU Training)
+### Comparison of GloVe • Word2Vec • FastText • BERT 
 
 This project builds a multi-label text classifier using the Twitter Multilabel Dataset from Kaggle.  
 The goal is to compare how different text-embedding methods perform when trained on the same dataset using GPU acceleration.
