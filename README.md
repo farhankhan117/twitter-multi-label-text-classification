@@ -20,7 +20,7 @@ The model was fine-tuned on the dataset, which helps it learn contextual meaning
 Training behavior (general pattern):  
 BERT usually learns faster and achieves higher accuracy, while traditional embeddings improve more gradually.
 
-**Synthetic performance results:**
+**## Synthetic performance results:**
 
 | Model     | Accuracy | Precision | Recall | F1 Score | AUC  |
 |-----------|----------|-----------|--------|----------|------|
@@ -32,7 +32,7 @@ BERT usually learns faster and achieves higher accuracy, while traditional embed
 Confusion matrix observations:  
 GloVe and Word2Vec often mix similar emotional categories, FastText handles unseen words more effectively, and BERT gives the most accurate predictions with minimal confusion.
 
-**Overall conclusion:**  
+**## Overall conclusion:**  
 Traditional embeddings give a good baseline, FastText performs better thanks to subword information, and BERT provides the strongest results because of its contextual understanding.  
 For modern NLP tasks, transformer-based models like BERT generally perform the best.
 
